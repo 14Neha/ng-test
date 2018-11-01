@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+nav{
+    background: #1f6cfd;
+    padding: 20px 0;
+}
+body{
+    background:#ecebeb !important;
+}
+.stylish-input-group .input-group-addon{
+    position: absolute;
+    right: 8px;
+    top: 5px;
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.user{
+    background: #fff;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px #ddd;
+}
+.user img{
+
+        height: 150px;
+        border-radius: 50%;
+        width: 150px;
+
+}

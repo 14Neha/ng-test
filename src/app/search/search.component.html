@@ -1,0 +1,72 @@
+<nav>
+	<div class="container">
+    <div class="row" >
+        <div class="col">
+            <div id="imaginary_container"> 
+                <select class="form-control" id="sel2" (change)="sort('login')">
+                    <option>Name A-Z</option>
+                    <option>Name Z-A</option>
+                   
+                  </select>
+            </div>
+        </div>
+        <div class="col">
+          <div id="imaginary_container"> 
+                <form #apidataForm="ngForm" novalidate style="width: 100%;">
+              <div class="input-group stylish-input-group">
+                   
+               <input type="text" [(ngModel)]="searchTerm$.login" name="login" #login="ngModel" class="form-control"  placeholder="Search" >  
+             
+                  <span class="input-group-addon">
+                       
+                  </span>
+                  <button  (click)="search(apidataForm)">
+                    <i class="fa fa-search"></i>
+                </button> 
+            
+              </div>
+            </form>
+          </div>
+      </div>
+    </div> 
+  </div>
+
+</nav>
+
+<div class="container">
+    <div class="row user" *ngFor="let result of results | orderBy: key : reverse | paginate: { itemsPerPage: 5, currentPage: p }">
+        <div class="col-2">
+            <img src="{{result.avatar_url}}" class="img-responsive img-circle">
+        </div>
+        <div class="col-9">
+            <h4>{{result.login}}</h4>
+            <p>{{result.url}}</p>
+            <div class="row">
+            <div class="col-8">
+                <ul>
+                    <li *ngFor="let repolist of repo | slice:0:3 ">{{repolist.name}}: one</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+              Details
+            </button>
+            </div>
+
+        </div>
+          <div id="collapseExample" [ngbCollapse]="isCollapsed">
+            <table class="table table-striped">
+                <tbody>
+                  <tr *ngFor="let repo of repo">
+                    <td>{{repo.name}}: one</td>
+                    <td>Doe</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+    </div>
+
+</div>
+<div class="row text-right"> <pagination-controls (pageChange)="p = $event"></pagination-controls></div>
